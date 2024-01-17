@@ -1,4 +1,6 @@
+using ImageGalleryAPI.Contracts;
 using ImageGalleryAPI.Models;
+using ImageGalleryAPI.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+//PhotoRepository
+builder.Services.AddScoped<IPhotosRepository, PhotoRepository>();
+//Repository Manager
+builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
 
 var app = builder.Build();
 

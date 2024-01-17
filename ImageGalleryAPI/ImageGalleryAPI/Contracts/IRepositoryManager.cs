@@ -1,6 +1,8 @@
 ﻿namespace ImageGalleryAPI.Contracts
 {
-    public interface IRepositoryMangager
+    public interface IRepositoryManager
     {
+        public IPhotosRepository Photos { get; }
+        int Save();
     }
 }

@@ -19,8 +19,18 @@ builder.Services.AddDbContext<DataContext>(options => {
 builder.Services.AddScoped<IPhotosRepository, PhotoRepository>();
 //Repository Manager
 builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
+//add cors
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("CorsPolicy", policy =>
+    {
+        policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+    });
+});
+
 
 var app = builder.Build();
+app.UseCors("CorsPolicy");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

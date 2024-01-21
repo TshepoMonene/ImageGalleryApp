@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "EzZX9DEPT4VXhf9uIsIabQOR/GvPe5i43/KJyK/UpTnqIQGGUGcTqv7+wEXiT7GrRFRDgBe04rf1KB+8cir74A==",
+  "dgSpecHash": "PVqxkJIu89v1xZj19r99Q+rnVacAdJBCsJT/9Guxu7DJzRjPXd2ac7FbDWzIUtrM6Yv+uiL141uetUmcImZbbw==",
   "success": true,
   "projectFilePath": "C:\\Users\\user\\Desktop\\ImageGalleryApp\\ImageGalleryAPI\\ImageGalleryWeb\\ImageGalleryWeb.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\system.text.json\\8.0.1\\system.text.json.8.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

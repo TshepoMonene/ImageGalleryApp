@@ -1,6 +1,10 @@
-﻿using ImageGalleryWeb.Models;
+﻿using ImageGalleryWeb.Extensions;
+using ImageGalleryWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Net.Http.Headers;
+using System.Text.Json;
+using System.Web;
 
 namespace ImageGalleryWeb.Controllers
 {
@@ -13,8 +17,12 @@ namespace ImageGalleryWeb.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public  async Task<IActionResult> Index()
         {
+            HttpClient client = new();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            //Sending request to find web api REST service resource GetAllEmployees using HttpClient
+            HttpResponseMessage Res = await client.GetAsync("https://localhost:7095/Photos");
             return View();
         }
 
@@ -22,6 +30,24 @@ namespace ImageGalleryWeb.Controllers
         {
             return View();
         }
+        public IActionResult Upload() 
+        {
+            Photo photo = new();
+            return View("UploadFormModal",photo);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Upload(Photo photo )
+        {
+            HttpClient client = new();
+            IFormFile file = Request.Form.Files[0];
+            photo.UploadedImage = file.ConvertToBytes();
+            var stringContent = new StringContent(JsonSerializer.Serialize(photo), System.Text.Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PostAsync("https://localhost:7095/Photos", stringContent);
+
+            return View(response);
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

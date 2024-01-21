@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGalleryAPI", "ImageGalleryAPI\ImageGalleryAPI.csproj", "{FC0CBDB3-7803-49CA-9BA7-5FE8E4B4D75B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageGalleryAPI", "ImageGalleryAPI\ImageGalleryAPI.csproj", "{FC0CBDB3-7803-49CA-9BA7-5FE8E4B4D75B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGalleryWeb", "ImageGalleryWeb\ImageGalleryWeb.csproj", "{5143460B-B07D-44B2-AD0C-832362C44556}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{FC0CBDB3-7803-49CA-9BA7-5FE8E4B4D75B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC0CBDB3-7803-49CA-9BA7-5FE8E4B4D75B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC0CBDB3-7803-49CA-9BA7-5FE8E4B4D75B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5143460B-B07D-44B2-AD0C-832362C44556}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5143460B-B07D-44B2-AD0C-832362C44556}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5143460B-B07D-44B2-AD0C-832362C44556}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5143460B-B07D-44B2-AD0C-832362C44556}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

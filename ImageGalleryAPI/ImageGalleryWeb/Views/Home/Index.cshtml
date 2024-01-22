@@ -1,13 +1,40 @@
-﻿@{
+﻿@model  IEnumerable<Photo>
+
+@{
     ViewData["Title"] = "Home Page";
 }
+
+@using ImageGalleryWeb.Extensions;
 <div id="PlaceHolder"></div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-<button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#uploadImage"
-data-url="@Url.Action("Upload")">
-    Upload</button>
+<div class="row">
+    <div class="col-4">
+        <button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#uploadImage"
+                data-url="@Url.Action("Upload")">
+            Upload
+        </button>
+    </div>
 
+    <div class="col-8">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                var imgSrc = item.UploadedImage.GetImage().ToString();
+                <div class="col-4">
+                    <div>
+                            <img src="@Url.Content(imgSrc)" width="80" height="80" />   
+                    </div>
+                     <div>
+                        <h4> @item.Title.ToString();</h4>
+                     </div>
+                     <div><p>@item.Description.ToString();</p></div>
+                     <div><p>View</p></div>
+                </div>
+                
+            }
+        </div>
+        
+    </div>
+     
+
+</div>

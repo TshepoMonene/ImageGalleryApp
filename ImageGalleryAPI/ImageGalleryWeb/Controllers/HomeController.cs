@@ -1,6 +1,7 @@
 ﻿using ImageGalleryWeb.Extensions;
 using ImageGalleryWeb.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections;
 using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Text.Json;
@@ -18,12 +19,15 @@ namespace ImageGalleryWeb.Controllers
         }
 
         public  async Task<IActionResult> Index()
-        {
+       {
+            
             HttpClient client = new();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             //Sending request to find web api REST service resource GetAllEmployees using HttpClient
             HttpResponseMessage Res = await client.GetAsync("https://localhost:7095/Photos");
-            return View();
+            var Results = Res.Content.ReadAsStringAsync().Result;
+            var photos = JsonSerializer.Deserialize<IEnumerable<Photo>>(Results);
+            return View(photos);
         }
 
         public IActionResult Privacy()

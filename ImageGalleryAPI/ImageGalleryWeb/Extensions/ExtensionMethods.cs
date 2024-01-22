@@ -1,4 +1,6 @@
-﻿namespace ImageGalleryWeb.Extensions
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace ImageGalleryWeb.Extensions
 {
     public static class ExtensionMethods
     {
@@ -12,6 +14,12 @@
             filestream.Read(bytes, 0, (int)file.Length);
 
             return bytes;
+        }
+        public static string GetImage(this byte[] byteArray)
+        {
+            string imreBase64Data = Convert.ToBase64String(byteArray);
+            string imgDataURL = string.Format("data:image/jpg;base64,{0}", imreBase64Data);  
+            return imgDataURL;
         }
     }
 }

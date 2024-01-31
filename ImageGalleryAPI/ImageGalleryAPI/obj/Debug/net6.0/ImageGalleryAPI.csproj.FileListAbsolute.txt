@@ -6,6 +6,8 @@ C:\Users\user\Desktop\ImageGalleryApp\ImageGalleryAPI\ImageGalleryAPI\bin\Debug\
 C:\Users\user\Desktop\ImageGalleryApp\ImageGalleryAPI\ImageGalleryAPI\bin\Debug\net6.0\ImageGalleryAPI.dll
 C:\Users\user\Desktop\ImageGalleryApp\ImageGalleryAPI\ImageGalleryAPI\bin\Debug\net6.0\ImageGalleryAPI.pdb
 C:\Users\user\Desktop\ImageGalleryApp\ImageGalleryAPI\ImageGalleryAPI\bin\Debug\net6.0\Humanizer.dll
+C:\Users\user\Desktop\ImageGalleryApp\ImageGalleryAPI\ImageGalleryAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\user\Desktop\ImageGalleryApp\ImageGalleryAPI\ImageGalleryAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\user\Desktop\ImageGalleryApp\ImageGalleryAPI\ImageGalleryAPI\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
 C:\Users\user\Desktop\ImageGalleryApp\ImageGalleryAPI\ImageGalleryAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\user\Desktop\ImageGalleryApp\ImageGalleryAPI\ImageGalleryAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -13,6 +15,7 @@ C:\Users\user\Desktop\ImageGalleryApp\ImageGalleryAPI\ImageGalleryAPI\bin\Debug\
 C:\Users\user\Desktop\ImageGalleryApp\ImageGalleryAPI\ImageGalleryAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\user\Desktop\ImageGalleryApp\ImageGalleryAPI\ImageGalleryAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\user\Desktop\ImageGalleryApp\ImageGalleryAPI\ImageGalleryAPI\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+C:\Users\user\Desktop\ImageGalleryApp\ImageGalleryAPI\ImageGalleryAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
 C:\Users\user\Desktop\ImageGalleryApp\ImageGalleryAPI\ImageGalleryAPI\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\user\Desktop\ImageGalleryApp\ImageGalleryAPI\ImageGalleryAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
 C:\Users\user\Desktop\ImageGalleryApp\ImageGalleryAPI\ImageGalleryAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll

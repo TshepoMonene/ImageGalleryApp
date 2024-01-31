@@ -3,6 +3,7 @@
 
 // Write your JavaScript code.
 
+//Modal popup function
 $(function () {
     var PlaceHolder = $('#PlaceHolder');
     $('button[data-toggle="ajax-modal"]').click(function (event){
@@ -16,10 +17,11 @@ $(function () {
 
     PlaceHolder.on('click', '[data-save="modal"]', function (event) {
         event.preventDefault();
-        var actionUrl = 'Home/Upload';
+        var actionUrl = 'Upload';
         var sendData = new FormData();
         var fileUpload = $("#ImageData").get(0);
         var files = fileUpload.files;
+        console.log(sendData);
 
         for (var i = 0; i < files.length; i++) {
             sendData.append('Files', files[i]);
@@ -56,6 +58,79 @@ $(function () {
 
 function fileCheck()
 {
- 
+   
+  
+}
+
+//Login functionn
+
+$(function ()
+{
+    $("#signIn").click(function (event) {
+        event.preventDefault()
+
+        var actionUrl = 'Login/Login';
+        var formData = new FormData();
+
+        formData.append("username", $("#username").val());
+        formData.append("password", $("#password").val());
+
+        console.log(formData)
+
+        $.ajax({
+            url: actionUrl,
+            enctype: 'multipart/form-data',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            
+            success: function (response) {
+              //  console.log(response)
+               location.href = '/Home/Index';
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+               console.error(textStatus, errorThrown);
+
+            }
+        });
+
+    })
+
+
+
+})
+
+//Details page button
+
+function getPhoto(photo)
+{
+    var sendData = photo;
+    console.log(photo);
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        url: '../Photos/getPhoto',
+        enctype: 'multipart/form-data',
+        type: 'POST',
+        data: sendData,
+        processData: false,
+        contentType: false,
+
+        success: function (response) {
+            console.log(response);
+            location.href = '../Shared/detailPage';
+            
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error(textStatus, errorThrown);
+
+        }
+    });
+    
 
 }
+
+

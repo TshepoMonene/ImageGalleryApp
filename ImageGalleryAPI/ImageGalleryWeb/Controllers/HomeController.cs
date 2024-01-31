@@ -12,6 +12,8 @@ namespace ImageGalleryWeb.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        public string baseUrl= "https://localhost:7096";
+
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -19,14 +21,18 @@ namespace ImageGalleryWeb.Controllers
         }
 
         public  async Task<IActionResult> Index()
-       {
-            
+        {
+
             HttpClient client = new();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            //Sending request to find web api REST service resource GetAllEmployees using HttpClient
-            HttpResponseMessage Res = await client.GetAsync("https://localhost:7095/Photos");
-            var Results = Res.Content.ReadAsStringAsync().Result;
+            var accessToken = HttpContext.Session.GetString("JWToken");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            HttpResponseMessage response = await client.GetAsync(baseUrl +"/getPhotos");
+            var Results = response.Content.ReadAsStringAsync().Result;
             var photos = JsonSerializer.Deserialize<IEnumerable<Photo>>(Results);
+            
+         
+            
             return View(photos);
         }
 
@@ -44,10 +50,14 @@ namespace ImageGalleryWeb.Controllers
         public async Task<IActionResult> Upload(Photo photo )
         {
             HttpClient client = new();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var accessToken = HttpContext.Session.GetString("JWToken");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
             IFormFile file = Request.Form.Files[0];
             photo.UploadedImage = file.ConvertToBytes();
             var stringContent = new StringContent(JsonSerializer.Serialize(photo), System.Text.Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PostAsync("https://localhost:7095/Photos", stringContent);
+            HttpResponseMessage response = await client.PostAsync(baseUrl+"/upload", stringContent);
 
             return View(response);
         }

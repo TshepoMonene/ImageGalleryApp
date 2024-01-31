@@ -1,34 +1,39 @@
 ﻿using ImageGalleryAPI.Contracts;
 using ImageGalleryAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ImageGalleryAPI.Controllers
 {
+   
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
+    [Authorize]
     public class PhotosController:ControllerBase
     {
         private readonly IRepositoryManager _repositoryManager;
-
-        public PhotosController(IRepositoryManager repositoryManager)
+        private readonly IConfiguration _config;
+        
+        public PhotosController(IRepositoryManager repositoryManager,IConfiguration config)
         {
             _repositoryManager = repositoryManager;
+             _config = config;
         }
 
 
-        [HttpGet]
+        [HttpGet("/getPhotos")]
         public IActionResult GetAll()
         {
             return Ok(_repositoryManager.Photos.GetAll());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("/getPhoto/{id}")]
         public IActionResult GetPhoto(int id)
         {
             return Ok(_repositoryManager.Photos.Get(id));
         }
 
-        [HttpPost]
+        [HttpPost("/upload")]
         public IActionResult Upload(Photo photo)
         {
             _repositoryManager.Photos.Create(photo);
@@ -36,14 +41,14 @@ namespace ImageGalleryAPI.Controllers
             return Ok(_repositoryManager.Save());
         }
 
-        [HttpPut]
+        [HttpPut("/edit")]
         public IActionResult Update(Photo photo) 
         {
             _repositoryManager.Photos.Update(photo);
 
             return Ok(_repositoryManager.Save());
         }
-        [HttpDelete]
+        [HttpDelete("/delete")]
         public IActionResult Delete(Photo photo) 
         {
             _repositoryManager.Photos.Delete(photo);

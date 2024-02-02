@@ -9,37 +9,37 @@ namespace ImageGalleryAPI.Repository
     {
 
         private readonly DataContext _dataContext;
-        internal DbSet<T> dbSet;
+        private DbSet<T> _dbSet;
 
         public RepositoryBase(DataContext dataContext) 
         {
           _dataContext = dataContext;
-            this.dbSet = _dataContext.Set<T>();
+            _dbSet = _dataContext.Set<T>();
         }
 
         public async void Create(T entity)
         {
-            await dbSet.AddAsync(entity);
+            await _dbSet.AddAsync(entity);
         }
 
         public void Delete(T entity)
         {
-             dbSet.Remove(entity);
+             _dbSet.Remove(entity);
         }
 
         public T Get(int id)
         {
-             return dbSet.Find(id);
+             return _dbSet.Find(id);
         }
 
         public IEnumerable<T> GetAll()
         {
-            return dbSet.ToList();
+            return _dbSet.ToList();
         }
 
         public void Update(T entity)
         {
-            dbSet.Update(entity);
+            _dbSet.Update(entity);
             
         }
         

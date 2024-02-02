@@ -57,9 +57,24 @@ namespace ImageGalleryWeb.Controllers
             IFormFile file = Request.Form.Files[0];
             photo.UploadedImage = file.ConvertToBytes();
             var stringContent = new StringContent(JsonSerializer.Serialize(photo), System.Text.Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PostAsync(baseUrl+"/upload", stringContent);
+            HttpResponseMessage response = new();
+            try {
+                 response = await client.PostAsync(baseUrl + "/upload", stringContent);
 
-            return View(response);
+            }
+            catch(Exception ex)
+            {
+               return NotFound(ex);
+            }
+
+            return Ok(response);
+        }
+
+
+        public IActionResult LogOut() 
+        {
+            return View("Login");
+        
         }
 
 

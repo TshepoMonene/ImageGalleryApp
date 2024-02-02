@@ -15,6 +15,5 @@
         public DateTime ModifiedDate { get; set; }
 
         public decimal Size { get; set;}
-
     }
 }

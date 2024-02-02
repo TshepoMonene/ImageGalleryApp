@@ -23,4 +23,8 @@
     <Folder Include="Areas\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\images\logo.jpg" />
+  </ItemGroup>
+
 </Project>

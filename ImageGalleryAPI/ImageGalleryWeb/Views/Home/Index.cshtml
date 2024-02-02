@@ -10,13 +10,26 @@
 <div style="margin-left:0 !important;">
     <div class="row">
         <div class="col-1 text-lg-end">
-            <button type="button" class="btn btn-primary btn-lg " data-toggle="ajax-modal" data-target="#uploadImage"
-                    data-url="@Url.Action("Upload")">
-                Upload
-            </button>
+            <div class="container-fluid">
+                <div class="row">
+                    <divc class="col-sm-auto bg-light sticky-top" style="height:100%" >
+                        <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center stick-top">
+                            <div class="mb-5">
+                                <img src="~/images/logo.jpg"  style="width:200px; height:200px"/>
+                            </div>
+                          
+                            <button type="button" class="btn btn-primary btn-lg " data-toggle="ajax-modal" data-target="#uploadImage"
+                                    data-url="@Url.Action("Upload")">
+                                Upload
+                            </button>
+                        </div>
+                    </divc>
+                </div>
+            </div>
+           
         </div>
 
-        <div class="col-8 d-flex" style=" margin-left:100px !important;">
+        <div class="col-9 d-flex" style=" margin-left:100px !important;">
             <div class="row">
                 @foreach (var item in Model)
                 {
@@ -32,9 +45,16 @@
                             <p class="card-text">@item.Description.ToString();</p>
                            @* @Html.ActionLink("getPhoto", "Photos", new{photo = item}, new { @class = "btn btn-info" });*@
                             @*<button class="btn btn-primary" id="details" onclick="getPhoto(`@photo.ToString()`)">Go somewhere</button>*@
-                            <form method="post" asp-controller="Photos" asp-action="getPhoto" asp-route-id="@item.Id">
-                               <button class="btn btn-primary" id="details" type="submit">Go somewhere</button>
-                            </form>
+                            <div class="d-flex justify-content-between">
+                                <form method="post" asp-controller="Photos" asp-action="getPhoto" asp-route-id="@item.Id">
+                                    <button class="btn btn-primary" id="details" type="submit">View</button>
+                                </form>
+                                <form asp-action="Delete" asp-controller="Photos" method="post" asp-route-id="@item.Id">
+                                    <button class="btn btn-danger" id="details" type="submit">Delete</button>
+                                </form>
+
+                            </div>
+                    
                         </div>
                     </div>
 

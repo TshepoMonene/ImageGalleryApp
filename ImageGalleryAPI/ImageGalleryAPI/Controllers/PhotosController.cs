@@ -45,10 +45,14 @@ namespace ImageGalleryAPI.Controllers
         public IActionResult Update(Photo photo) 
         {
             _repositoryManager.Photos.Update(photo);
-
-            return Ok(_repositoryManager.Save());
+            var results = _repositoryManager.Save();
+            if(results > 0)
+            {
+                return Ok(photo);
+            }
+            return NotFound(); ;
         }
-        [HttpDelete("/delete")]
+        [HttpPost("/delete")]
         public IActionResult Delete(Photo photo) 
         {
             _repositoryManager.Photos.Delete(photo);

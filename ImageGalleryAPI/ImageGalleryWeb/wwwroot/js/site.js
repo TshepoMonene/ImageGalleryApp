@@ -44,11 +44,12 @@ $(function () {
             processData: false,
             contentType: false,
             success: function (response) {
-                console.log(response);
+         
                 PlaceHolder.find('.modal').modal('hide')
+                window.location.reload();
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                console.error(textStatus, errorThrown);
+                window.alert("Upload Unsucssefull")
                 
             }
         });
@@ -101,36 +102,8 @@ $(function ()
 
 })
 
-//Details page button
 
-function getPhoto(photo)
-{
-    var sendData = photo;
-    console.log(photo);
-    $.ajax({
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        url: '../Photos/getPhoto',
-        enctype: 'multipart/form-data',
-        type: 'POST',
-        data: sendData,
-        processData: false,
-        contentType: false,
 
-        success: function (response) {
-            console.log(response);
-            location.href = '../Shared/detailPage';
-            
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.error(textStatus, errorThrown);
 
-        }
-    });
-    
-
-}
 
 

@@ -1,4 +1,4 @@
-Image Gallery Application
+##Image Gallery Application
 This application allows users to upload, view, and delete photos using a web API and a frontend built with mvc asp.net.
 
 To run the application, follow these steps:
